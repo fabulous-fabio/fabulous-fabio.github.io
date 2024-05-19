@@ -52,14 +52,16 @@ $(document).ready(function() {
   $('.skill').each(function() {
     var $prevBtn = $(this).find('.extend-button');
     var $text = $(this).find('.skills-info');
-
+    var $skill = $(this);
+    console.log("skill: " + $skill)
     $prevBtn.on('click', function() {
       // Toggle 'active' class on the text element
+
       $text.toggleClass('active');
 
       if ($text.hasClass('active')) {
         $prevBtn.text('^');  // Change button text to '^' when text is visible
-        $(this).css({
+        $skill.css({
           "padding": "10px",
           "background-color": "var(--clr-light)",
           "border-radius": "11px",
@@ -71,11 +73,12 @@ $(document).ready(function() {
           `,
           "grid-template-columns": "80% 1fr",
           "grid-column-gap": ".5em",
-          "grid-row-gap": ".4em"
+          "grid-row-gap": ".4em",
+          "max-height": "350px"
         });
       } else {
         $prevBtn.text('v');  // Change button text to 'v' when text is hidden
-        $(this).css({
+        $skill.css({
           "padding": "10px",
           "background-color": "var(--clr-light)",
           "border-radius": "11px",
@@ -86,7 +89,8 @@ $(document).ready(function() {
             'title button',
           "grid-template-columns": "80% 1fr",
           "grid-column-gap": ".5em",
-          "grid-row-gap": ".4em"
+          "grid-row-gap": ".4em",
+          "max-height": "25px"
         });
       }
     });

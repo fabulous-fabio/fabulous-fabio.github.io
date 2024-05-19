@@ -564,28 +564,29 @@ header {
 
 .skills__programming {
   display: grid;
-
   grid-template-areas:
-    "objekt object object object"
-    "objekt object object object"
-    "objekt object object object";
-
-  grid-column-gap: 4em;
+    "objekt object object object object";
+  grid-template-columns: repeat(5, 20%);
+  grid-column-gap: 1em;
   grid-row-gap: 4em;
+  min-height: 870px;
+  height: auto;
 }
 .skill {
   padding: 10px;
   background-color: var(--clr-light);
   border-radius: 11px;
   box-shadow: var(--bs);
-
   display: grid;
   grid-template-areas:
     "title button";
   grid-template-columns: 80% 1fr;
+  grid-template-rows: 1.5em 1fr;
   grid-column-gap: .5em;
   grid-row-gap: .4em;
+  max-height: 25px;
 }
+
 
 .title {
   grid-area: title;
@@ -602,6 +603,7 @@ header {
 .skills-info.active {
   display: block;
   grid-area: text;
+  overflow-wrap: break-word;
 }
 
 .skills-info {
