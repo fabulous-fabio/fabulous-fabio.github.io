@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Portfolio website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    <script src="https://kit.fontawesome.com/a8af704177.js" crossorigin="anonymous"></script>
+
     crossorigin="anonymous">
     <script src="js/jquery-3.7.1.min.js"></script>
 
@@ -53,21 +54,27 @@
 
 
       <div class="about-me carousel-container" id="about">
-        <h2 class="section__title section__title--about">Liquids shooting prop gun</h2>
+        <h2 class="section__title section__title--about">Drinking Gun</h2>
         <p class="section__subtitle section__subtitle--about">Interdisciplanary Project</p>
 
         <div class="about-me__body">
           This gun was designed for a costume. The main goal was to shoot drinking liquids using air pressure and a self made valve system.
-          To improve it's effects a rasperry pi pico was used to control an advanced lighting system taking effect when shooting liquids.
+          This was achieved by integrating a small ball pump in the cardboard design that can be used by pumping the reload grip. 
+          To control the liquids system I designed a small magnetic valve using tubing and a small metal ball.
+          To improve the appeal a rasperry pi pico was used to control an advanced lighting system taking effect when shooting liquids.
         </div>
         
 
           <div class="about-me__img">
-            <img src="img/foto.jpeg" alt="" class="item">
-            <img src="img/coconut.jpeg" alt="" class="item project-image">
-            <img src="img/gläser.jpeg" alt="" class="item">
+            
+            <img src="img/gun_handheld.JPG" alt="" class="item">
+            <img src="img/full_gun.JPG" alt="" class="item">
+            <img src="img/gun_lights.JPG" alt="" class="item">
+            <img src="img/valve.JPG" alt="" class="item">
 
-            <button class="next-btn">Next</button>
+            <button class="prev-btn switch-button left"><</button>
+            <button class="next-btn switch-button right">></button>
+            
           </div>
         </div>
 
@@ -90,14 +97,60 @@
               <img src="img/foto.jpeg" alt="" class="item">
               <img src="img/coconut.jpeg" alt="" class="item project-image">
               <img src="img/gläser.jpeg" alt="" class="item">
-
-              <button class="next-btn">Next</button>
+              
+              <button class="prev-btn switch-button left"><</button>
+              <button class="next-btn switch-button right">></button>
+              
             </div>
           </div>
         
 
           
 
+    </section>
+
+
+    <section class="skills">
+      <h1 class="section__title section__title--intro">Skillset</h1>
+      <div class="skills__programming">
+        <div class="skill">
+          <h3>C/C++</h3>
+          <button class="extend-button">v</button>
+          <div class="skills-info">
+            <p>das ist die Zusatzinfo</p>
+          </div>
+        </div>
+
+
+        <div class="skill">
+          <h3>Python</h3>
+          <button class="extend-button">v</button>
+          <div class="skills-info">
+            <p></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>C# / .Net</h3>
+          <button class="extend-button">v</button>
+          <div class="skills-info">
+            <p></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>SQL</h3>
+          <button class="extend-button">v</button>
+          <div class="skills-info">
+            <p></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>C/C++</h3>
+          <button class="extend-button">v</button>
+          <div class="skills-info">
+            <p></p>
+          </div>
+        </div>
+      </div>
     </section>
     
   
@@ -243,9 +296,7 @@
 
 
 
-    <script src="js/index.js" type="text/javascript">
-
-    </script>
+    <script src="js/index.js" type="text/javascript"></script>
 
   </body>
 </html>

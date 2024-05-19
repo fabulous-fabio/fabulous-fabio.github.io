@@ -539,3 +539,82 @@ header {
   object-fit: cover;
   overflow: hidden;
 }
+
+.switch-button {
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  background-color: var(--clr-medium);
+  border: none;
+  box-shadow: var(--bs);
+  
+}
+
+.switch-button.left {
+  position: relative;
+  bottom: 55%;
+  left: -10%;
+}
+
+.switch-button.right {
+  position: relative;
+  bottom: 55%;
+  right: -80%;
+}
+
+.skills__programming {
+  display: grid;
+
+  grid-template-areas:
+    "objekt object object object"
+    "objekt object object object"
+    "objekt object object object";
+
+  grid-column-gap: 4em;
+  grid-row-gap: 4em;
+}
+.skill {
+  padding: 10px;
+  background-color: var(--clr-light);
+  border-radius: 11px;
+  box-shadow: var(--bs);
+
+  display: grid;
+  grid-template-areas:
+    "title button";
+  grid-template-columns: 80% 1fr;
+  grid-column-gap: .5em;
+  grid-row-gap: .4em;
+}
+
+.title {
+  grid-area: title;
+}
+
+.skills__programming button {
+  grid-area: button;
+}
+
+.skills-info {
+  grid-area: text;
+}
+
+.skills-info.active {
+  display: block;
+  grid-area: text;
+}
+
+.skills-info {
+  display: none;
+}
+
+.skill > skills-info.active {
+  grid-template-areas: 
+    "title button"
+    "text text";
+}
+
+.extend-button {
+  background: none;
+  border: none;
+}
