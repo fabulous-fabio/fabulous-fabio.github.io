@@ -138,6 +138,7 @@ h3 { font-size: var(--fs-h3)}
   padding: .25em 1em;
   font-family: var(--ff-secondary);
   margin-bottom: 2em;
+  max-height: 40px;
 }
 .section__subtitle--about-left {
   background: var(--clr-accent);
@@ -145,6 +146,12 @@ h3 { font-size: var(--fs-h3)}
   font-family: var(--ff-secondary);
   margin-bottom: 2em;
 }
+
+.section__subtitle--projects{
+  margin-bottom: 0px;
+}
+
+
 
 /* header */
 
@@ -373,13 +380,17 @@ header {
 
 }
 
+
+
 @media(min-width: 600px) {
   .about-me {
     display: grid;
     grid-template-columns: 1fr 300px;
+    grid-template-rows: 1fr auto 3rem 60%;;
     grid-template-areas:
       "title img"
       "subtitle img"
+      "skills img"
       "text img";
 
     grid-column-gap: 2em;
@@ -399,6 +410,13 @@ header {
   .section__title--about {
     grid-area: title;
 
+  }
+
+  .project-skills{
+    grid-area: skills;
+    margin-bottom: 2em;
+    margin-top: .3em;
+    max-height: 1.2rem;
   }
 
   .section__subtitle--about {
@@ -750,30 +768,32 @@ Main components
       } 
     }
   }
-  .content-skills {
-    font-size: 12px;
-    padding:0;
-    margin-bottom: 0;
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    li {
-      background: var(--clr-light);
-      box-shadow: var(--bs);
-      border-radius: 2px;
-      display: inline-block;
-      padding: 2px 10px;
-      color: rgba(0, 0, 0, 0.7);
-      margin: 3px 2px;
-      text-align: center;
-      flex-grow: 1;
-      transition-duration: 300ms;
-      transition-property: background-color;
-    }
+  
+}
 
-    li:hover {
-      background-color: var(--clr-accent);
-    }
+.content-skills {
+  font-size: 12px;
+  padding:0;
+  margin-bottom: 0;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  li {
+    background: var(--clr-light);
+    box-shadow: var(--bs);
+    border-radius: 2px;
+    display: inline-block;
+    padding: 2px 10px;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 3px 2px;
+    text-align: center;
+    flex-grow: 1;
+    transition-duration: 300ms;
+    transition-property: background-color;
+  }
+
+  li:hover {
+    background-color: var(--clr-accent);
   }
 }
 .cd-timeline-content:after {
@@ -865,3 +885,34 @@ Main components
     text-align: right;
   }
 }
+
+
+
+
+
+.project{
+  display: none;
+}
+.project.active, .project.allvisible{
+  display: grid;
+}
+.filter-item{
+  color: black;
+}
+.filter-item.active{
+  color: var(--clr-accent);
+
+}
+
+.filter-item.active:hover{
+  color: black;
+}
+
+.cancel-filter{
+  display: none;
+
+}
+
+.cancel-filter.active{
+  display: block;
+}s

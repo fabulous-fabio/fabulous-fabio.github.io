@@ -189,67 +189,151 @@
     <section class="my-projects" id="projects">
       <h2 class="section__title">My Projects</h2>
       <h4 class="section__subtitle section__subtitle--intro"></h4>
-
-
-      <div class="about-me carousel-container" id="about">
-        <h2 class="section__title section__title--about">Drinking Gun</h2>
-        <p class="section__subtitle section__subtitle--about">Interdisciplanary Project</p>
-
-        <div class="about-me__body">
-          This gun was designed for a costume. The main goal was to shoot drinking liquids using air pressure and a self made valve system.
-          This was achieved by integrating a small ball pump in the cardboard design that can be used by pumping the reload grip. 
-          To control the liquids system I designed a small magnetic valve using tubing and a small metal ball.
-          To improve the appeal a rasperry pi pico was used to control an advanced lighting system taking effect when shooting liquids.
-        </div>
+      <h6>Filters:</h6>
+      <ul class="content-skills project-skills">
+        <li class="filter-item" data-item="python">Python<div class="cancel-filter python"> X</div></li>
+        <li class="filter-item" data-item="database">Database<div class="cancel-filter database"> X</div></li>
+        <li class="filter-item" data-item="ml">Machine Learning<div class="cancel-filter ml"> X</div></li>
+        <li class="filter-item" data-item="web">Web Development<div class="cancel-filter web"> X</div></li>
+        <li class="filter-item" data-item="C">C/C++<div class="cancel-filter C"> X</div></li>
+        <li class="filter-item" data-item="data-science">Data Science<div class="cancel-filter data-science"> X</div></li>
         
-
-          <div class="about-me__img">
-            
-            <img src="img/gun_handheld.JPG" alt="" class="item">
-            <img src="img/full_gun.JPG" alt="" class="item">
-            <img src="img/gun_lights.JPG" alt="" class="item">
-            <img src="img/valve.JPG" alt="" class="item">
-
-            <button class="prev-btn switch-button left"><</button>
-            <button class="next-btn switch-button right">></button>
-            
-          </div>
-        </div>
+      </ul>
+      
 
         <br>
         <br>
         <br>
 
-        <div class="about-me carousel-container" id="about">
+        <div class="about-me carousel-container project allvisible python ml data-science" id="about">
           <h2 class="section__title section__title--about">Data Analytics</h2>
-          <p class="section__subtitle section__subtitle--about">Data Science</p>
+          <p class="section__subtitle section__subtitle--about section__subtitle--projects">Data Science</p>
+          <ul class="content-skills project-skills">
+            <li>Python</li>
+            <li>Pandas</li>
+            <li>Numpy</li>
+            <li>Plotly</li>
+          </ul>
   
           <div class="about-me__body">
             Data Analytics Project to analyze data about renewable Energies and Weather.
 
-            This Project also included first trys with Machine Learning.
-
+            This Project also included first experiences with Machine Learning.
+            <br>
+            <br>
+            <br>
             <a href="https://github.com/fabulous-fabio/Data_Analytics">View the GitHub Repository</a>
+         
+            <br>
           </div>
           
   
             <div class="about-me__img">
               
+              
               <img src="img/DataAnalytics1.png" alt="" class="item">
               <img src="img/DataAnalytics2.png" alt="" class="item">
-              
   
               <button class="prev-btn switch-button left"><</button>
               <button class="next-btn switch-button right">></button>
               
             </div>
           </div>
-        
+
+
+          <br>
+          <br>
+          <br>
+
+          <div class="about-me carousel-container allvisible project java C python " id="about">
+            <h2 class="section__title section__title--about">ESP 32</h2>
+            <p class="section__subtitle section__subtitle--about">Microcontroller and Android development</p>
+            <ul class="content-skills project-skills">
+              <li>Java</li>
+              <li>Android</li>
+              <li>ArduinoIDE</li>
+              <li>C++/Python</li>
+              </ul>
+            <div class="about-me__body">
+              Using an ESP32 and a Heartrate-Sensor hte heartrate gets measured and displayed in an Android App.
+            </div>
+            
+    
+              <div class="about-me__img">
+                
+                <img src="img/ESP32HeartrateApp.jpg" alt="" class="item">
+                <img src="img/ESP32HeartrateApp2.jpg" alt="" class="item">
+    
+                <button class="prev-btn switch-button left"><</button>
+                <button class="next-btn switch-button right">></button>
+                
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+
+
+
+            <div class="about-me carousel-container allvisible project python javascript ai database" id="about">
+              <h2 class="section__title section__title--about">Image Processing Business</h2>
+              <p class="section__subtitle section__subtitle--about">Full Stack Development</p>
+              <ul class="content-skills project-skills">
+                <li>Generative AI</li>
+                <li>Django</li>
+                <li>Python</li>
+                <li>JavaScript</li>
+                </ul>
+              <div class="about-me__body">
+                I founded my first small business that focuses on an online tool to create images using a self coded online editor and stable diffusion models. The images can then be printed on clotes and other items and ordered in the online shop I implemented in Django.
+              </div>
+              
+      
+                <div class="about-me__img">
+                  
+                  <img src="img/Webstore1.jpg" alt="" class="item">
+                  <img src="img/Webstore2.jpg" alt="" class="item">
+      
+                  <button class="prev-btn switch-button left"><</button>
+                  <button class="next-btn switch-button right">></button>
+                  
+                </div>
+              </div>
+              <br>
+              <br>
+              <br>
+            <br>
+          <!--
+          <div class="about-me carousel-container" id="about">
+            <h2 class="section__title section__title--about">Drinking Gun</h2>
+            <p class="section__subtitle section__subtitle--about">Interdisciplanary Project</p>
+    
+            <div class="about-me__body">
+              This gun was designed for a costume. The main goal was to shoot drinking liquids using air pressure and a self made valve system.
+              This was achieved by integrating a small ball pump in the cardboard design that can be used by pumping the reload grip. 
+              To control the liquids system I designed a small magnetic valve using tubing and a small metal ball.
+              To improve the appeal a rasperry pi pico was used to control an advanced lighting system taking effect when shooting liquids.
+            </div>
+            
+    
+              <div class="about-me__img">
+                
+                <img src="img/gun_handheld.JPG" alt="" class="item">
+                <img src="img/full_gun.JPG" alt="" class="item">
+                <img src="img/gun_lights.JPG" alt="" class="item">
+                <img src="img/valve.JPG" alt="" class="item">
+    
+                <button class="prev-btn switch-button left"><</button>
+                <button class="next-btn switch-button right">></button>
+                
+              </div>
+            </div>
+          -->
 
           
 
     </section>
-
+    
 
 
 

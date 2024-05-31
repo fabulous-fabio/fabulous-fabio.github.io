@@ -33,6 +33,52 @@ $(document).ready(function() {
       $next.addClass('active');
     });
 
+    $('ul').on('click', '.filter-item:not(.active)', function() {
+      console.log("not active");
+
+      // Entfernt die 'active' Klasse von allen Listenelementen
+      $('.filter-item').removeClass('active');
+      $('.cancel-filter').removeClass('active');
+      $(".project").removeClass('active');
+
+      // Fügt die 'active' Klasse dem geklickten Listenelement hinzu
+      $(this).addClass('active');
+
+      // Liest das data-item Attribut aus
+      var dataItem = $(this).data('item');
+
+      // Entfernt die 'allvisible' Klasse von allen Projekten
+      $(".project").removeClass('allvisible');
+
+      // Fügt die 'active' Klasse den entsprechenden Projekten hinzu
+      $(".project." + dataItem).addClass('active');
+
+      // Zeigt das cancel-filter Element an
+      $('.cancel-filter.' + dataItem).addClass('active');
+  });
+
+  // Event-Delegation für das Deaktivieren eines active filter-item
+  $('ul').on('click', '.filter-item.active', function() {
+      console.log("deactivate...")
+
+      // Entfernt die 'active' Klasse vom geklickten Listenelement
+      $(this).removeClass('active');
+      if ( $('.filter-item.active').length === 0) {
+        $('.project').addClass('allvisible');
+      }
+      // Liest das data-item Attribut aus
+      var dataItem = $(this).data('item');
+
+      // Entfernt die 'active' Klasse von den entsprechenden Projekten
+      $(".project." + dataItem).removeClass('active');
+
+      // Entfernt die 'active' Klasse vom cancel-filter Element
+      $('.cancel-filter.' + dataItem).removeClass('active');
+  });
+
+
+    
+
     $prevBtn.on('click', function() {
       var $current = $items.filter('.active');
       var $prev = $current.prev('.item');
