@@ -915,4 +915,30 @@ Main components
 
 .cancel-filter.active{
   display: block;
-}s
+}
+
+
+.transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.module {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  padding: .3rem, .2rem;
+  box-shadow: var(--bs);
+  margin: 5px;
+  border-radius: 11px;
+}
+.module-name {
+  flex: 1;
+  text-align: left;
+  margin-left: 5%;
+}
+.score {
+  flex: 0 0 50px;
+  text-align: right;
+  margin-right: 5%;
+}
