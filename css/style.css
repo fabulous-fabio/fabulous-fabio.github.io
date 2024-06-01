@@ -424,7 +424,7 @@ header {
     grid-row: 2;
     position: relative;
     left: -2em;
-    width: calc(100% + 2em);
+    width: calc(100% - 10em);
     padding-left: 1em;
     padding-right: calc(200px + 4em);
   }
@@ -583,12 +583,13 @@ header {
 .skills__programming {
   display: grid;
   grid-template-areas:
-    "objekt object object object object";
+    "objekt object object object";
   grid-template-columns: repeat(5, 20%);
   grid-column-gap: 1em;
   grid-row-gap: 4em;
   min-height: 870px;
   height: auto;
+  max-width: 100%;
 }
 .skill {
   padding: 10px;
