@@ -11,7 +11,60 @@ navLinks.forEach(link => {
   })
 })
 
+function getDistanceToTop(element) {
+  // Get the bounding rectangle of the element
+  var rect = element.getBoundingClientRect();
+  // Calculate the distance from the top of the viewport to the top of the element
+  var distance = rect.top + window.scrollY;
+  return distance;
+}
+
 $(document).ready(function() {
+
+
+  // scroll propertys
+  function windowScroll() {
+    var st = $(document).scrollTop();
+    let C = 70;
+    console.log(st);
+    
+    
+
+    let windowHeight = $(window).height();
+
+    let destinyAdaption = windowHeight / 2;;;
+
+    let C1 = $(".timeline-1").offset().top;
+    let C2 = $(".timeline-2").offset().top;
+    let C3 = $(".timeline-3").offset().top;
+    let C4 = $(".timeline-4").offset().top;
+    let C5 = $(".timeline-5").offset().top;
+
+    let objectlist = [C1, C2, C3, C4, C5]
+
+    for (let i = 0; i < objectlist.length; i++) {
+      if (i%2 == 0) {
+        if (0 >= -.5 * (objectlist[i] - destinyAdaption - st)){
+          $(".timeline-"+ (i+1)).css({"margin-left": -.5 * (objectlist[i] - destinyAdaption - st) + "px"});
+        }
+      } else {
+        if (-10 >= -.5 * (objectlist[i] - destinyAdaption - st)){
+          $(".timeline-"+ (i+1)).css({"margin-right": -.5 * (objectlist[i] - destinyAdaption - st) + "px"});
+        }
+      }
+    }
+    
+    
+
+
+  }
+  $(document).scroll(function(){
+    windowScroll();
+  })
+
+
+
+
   $('.carousel-container').each(function() {
     var $carousel = $(this).find('.about-me__img');
     var $items = $carousel.find('.item');
@@ -142,3 +195,4 @@ $(document).ready(function() {
     });
   });
 });
+
