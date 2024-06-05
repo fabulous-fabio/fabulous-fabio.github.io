@@ -59,7 +59,9 @@ $(document).ready(function() {
 
   }
   $(document).scroll(function(){
-    windowScroll();
+    if ($(window).width() >= 768) {
+      windowScroll();
+    };
   })
 
 
