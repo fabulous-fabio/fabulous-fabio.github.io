@@ -58,11 +58,29 @@ $(document).ready(function() {
 
 
   }
+
+
+  function checkVisibility() {
+    $('.about-me__img').each(function() {
+        if ($(this).isInViewport()) { // 'true' means fully visible
+          console.log("visible!!!")
+            $(this).addClass('active');
+        }
+    });
+}
+
+// Check visibility on page load
+checkVisibility();
+
+
+
   $(document).scroll(function(){
+    checkVisibility();
     if ($(window).width() >= 768) {
       windowScroll();
     };
   })
+
 
 
 
@@ -198,3 +216,12 @@ $(document).ready(function() {
   });
 });
 
+$.fn.isInViewport = function() {
+  var elementTop = $(this).offset().top;
+  var elementBottom = elementTop + $(this).outerHeight();
+
+  var viewportTop = $(window).scrollTop();
+  var viewportBottom = viewportTop + $(window).height();
+
+  return elementBottom > viewportTop && elementTop < viewportBottom;
+};

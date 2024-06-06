@@ -369,11 +369,19 @@ header {
   max-width: 1000px;
   margin: 0 auto;
 }
-
-.about-me__img {
-  box-shadow: var(--bs)
-
+.about-me__img.active {
+  display: block;
+  transform: translateX(0px);
 }
+.about-me__img {
+  box-shadow: var(--bs);
+  transform: translateX(1000px);
+  transition-duration: 1000ms;
+  transition-property: transform;
+  transition-timing-function:cubic-bezier(1, 0, 0, 1);
+}
+
+
 
 .carousel {
   box-shadow: var(--bs)
@@ -446,7 +454,6 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
   }
 }
 
@@ -464,6 +471,10 @@ header {
 
 }
 
+#cv {
+  padding: 2rem;
+  margin-left: 1rem;
+}
 .portfolio {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

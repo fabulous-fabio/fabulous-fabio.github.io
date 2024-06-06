@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a8af704177.js" crossorigin="anonymous"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-visible@1.2.0/jquery.visible.min.js"></script>
 
   </head>
   <body>
@@ -27,10 +28,10 @@
       </button>
       <nav class="nav">
         <ul class="nav__list">
-          <li class="nav__item" ><a href="#home" class="nav__link">Home</a></li>
-          <li class="nav__item" ><a href="#services" class="nav__link">Meine Services</a></li>
-          <li class="nav__item" ><a href="#about" class="nav__link">Über mich</a></li>
-          <li class="nav__item" ><a href="#work" class="nav__link">Meine Arbeit</a></li>
+          <li class="nav__item" ><a href="#cv" class="nav__link">Curriculum vitae</a></li>
+          <li class="nav__item" ><a href="#projects" class="nav__link">Projects</a></li>
+          <li class="nav__item" ><a href="#transcript" class="nav__link">Transcript</a></li>
+          <!--<li class="nav__item" ><a href="#work" class="nav__link">Meine Arbeit</a></li>-->
         </ul>
       </nav>
     </header>
@@ -67,7 +68,11 @@
     <br>
     <br>
     <br>
+    <div>
+      <h1 id="cv">CURRICULUM VITAE</h1>
+    </div>
     <section id="cd-timeline" class="cd-container">
+      
       <div class="cd-timeline-block">
         <div class="cd-timeline-img cd-picture">
         </div>
@@ -224,7 +229,36 @@
         <br>
         <br>
         <br>
+        <div class="about-me carousel-container allvisible project python ml data-science" id="about">
+          <h2 class="section__title section__title--about">Machine Learning</h2>
+          <p class="section__subtitle section__subtitle--about">Data Science</p>
+          <ul class="content-skills project-skills">
+            <li>Python</li>
+            <li>Skikitlearn</li>
+            <li>Pandas</li>
+            </ul>
+          <div class="about-me__body">
+            Using different Machine Learning algorithms like polynomial regression and Random Forest Regression I was able to create models that can predict various different values and classes.
+            This included the prediction of housing prices based on housing stats, the success longevity of NBA players or the classification of handwritten numbers.
+          </div>
+          
+  
+            <div class="about-me__img">
+              
+              <img src="img/machine_learning1.JPG"  onerror="this.src='img/image-not-found.jpeg';" class="item">
+              <img src="img/machine_learning2.JPG"  onerror="this.src='img/image-not-found.jpeg';" class="item">
+              <img src="img/machine_learning3.JPG"  onerror="this.src='img/image-not-found.jpeg';" class="item">
+  
+              <button class="prev-btn switch-button left"><</button>
+              <button class="next-btn switch-button right">></button>
+              
+            </div>
+          </div>
 
+
+          <br>
+          <br>
+          <br>
         <div class="about-me carousel-container project allvisible python ml data-science" id="about">
           <h2 class="section__title section__title--about">Data Analytics</h2>
           <p class="section__subtitle section__subtitle--about section__subtitle--projects">Data Science</p>
