@@ -53,20 +53,23 @@ $(document).ready(function() {
         }
       }
     }
-    
-    
-
-
   }
+
+  
 
 
   function checkVisibility() {
     $('.about-me__img').each(function() {
-        if ($(this).isInViewport()) { // 'true' means fully visible
-          console.log("visible!!!")
+        if ($(this).isInViewport()) {
             $(this).addClass('active');
         }
     });
+
+    $('.cd-timeline-block').each(function() {
+      if ($(this).isInViewport()) {
+          $(this).addClass('active');
+      }
+  });
 }
 
 // Check visibility on page load
@@ -76,7 +79,7 @@ checkVisibility();
 
   $(document).scroll(function(){
     checkVisibility();
-    if ($(window).width() >= 768) {
+    if ($(window).width() >= 968) {
       windowScroll();
     };
   })

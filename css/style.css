@@ -54,6 +54,7 @@ body {
   font-family: var(--ff-primary);
   font-size: var(--fs-body);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 section{
@@ -369,19 +370,19 @@ header {
   max-width: 1000px;
   margin: 0 auto;
 }
-.about-me__img.active {
-  display: block;
-  transform: translateX(0px);
-}
+
 .about-me__img {
   box-shadow: var(--bs);
   transform: translateX(1000px);
   transition-duration: 1000ms;
   transition-property: transform;
   transition-timing-function:cubic-bezier(1, 0, 0, 1);
+
 }
 
-
+.about-me__img.active {
+  transform: translateX(0px);
+}
 
 .carousel {
   box-shadow: var(--bs)
@@ -702,7 +703,16 @@ Main components
 .cd-timeline-block {
   position: relative;
   margin: 2em 0;
+  transition:cubic-bezier(1, 0, 0, 1), 100ms;
+  transform: translateX(1000px);
 }
+
+.cd-timeline-block.active {
+  transform: translateX(0px);
+}
+
+
+
 .cd-timeline-block:after {
   content: "";
   display: table;
@@ -717,6 +727,7 @@ Main components
 @media only screen and (min-width: 1170px) {
   .cd-timeline-block {
     margin: 4em 0;
+    transform: translateX(0px);
   }
   .cd-timeline-block:first-child {
     margin-top: 0;
