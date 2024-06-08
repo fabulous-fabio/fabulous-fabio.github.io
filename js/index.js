@@ -20,7 +20,9 @@ function getDistanceToTop(element) {
 }
 
 $(document).ready(function() {
-
+  if ($(window).width() <= 968) {
+    $(".cd-timeline-content").addClass("appear");
+  };
 
   // scroll propertys
   function windowScroll() {
@@ -59,17 +61,12 @@ $(document).ready(function() {
 
 
   function checkVisibility() {
-    $('.about-me__img').each(function() {
+    $('.appear').each(function() {
         if ($(this).isInViewport()) {
+            $(this).css('display', 'block');
             $(this).addClass('active');
         }
     });
-
-    $('.cd-timeline-block').each(function() {
-      if ($(this).isInViewport()) {
-          $(this).addClass('active');
-      }
-  });
 }
 
 // Check visibility on page load

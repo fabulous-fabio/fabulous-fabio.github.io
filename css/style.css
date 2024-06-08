@@ -679,6 +679,7 @@ Main components
   padding: 2em 0;
   margin-top: 2em;
   margin-bottom: 2em;
+  overflow-x: hidden;
 }
 #cd-timeline::before {
   content: '';
@@ -964,4 +965,14 @@ Main components
   flex: 0 0 50px;
   text-align: right;
   margin-right: 5%;
+}
+
+.appear {
+  display: none;
+  transform: translateX(1000px);
+}
+
+.appear.active {
+  transition:cubic-bezier(1, 0, 0, 1), 100ms;
+  transform: translateX(0px);
 }
