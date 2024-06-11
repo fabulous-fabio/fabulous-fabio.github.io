@@ -20,9 +20,9 @@ function getDistanceToTop(element) {
 }
 
 $(document).ready(function() {
-  if ($(window).width() <= 968) {
+  /*if ($(window).width() <= 968) {
     $(".cd-timeline-content").addClass("appear");
-  };
+  };*/
 
   // scroll propertys
   function windowScroll() {
@@ -70,12 +70,12 @@ $(document).ready(function() {
 }
 
 // Check visibility on page load
-checkVisibility();
+/*checkVisibility();*/
 
 
 
   $(document).scroll(function(){
-    checkVisibility();
+    /*checkVisibility();*/
     if ($(window).width() >= 968) {
       windowScroll();
     };
