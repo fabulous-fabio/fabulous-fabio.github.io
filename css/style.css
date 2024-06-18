@@ -967,11 +967,11 @@ Main components
 }
 
 .appear {
-  display: none;
+  /*display: none;*/
   transform: translateX(1000px);
 }
 
 .appear.active {
-  transition:cubic-bezier(1, 0, 0, 1), 100ms;
+  transition:cubic-bezier(1, 0, 0, 1), 300ms;
   transform: translateX(0px);
 }

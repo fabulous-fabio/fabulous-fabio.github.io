@@ -63,19 +63,19 @@ $(document).ready(function() {
   function checkVisibility() {
     $('.appear').each(function() {
         if ($(this).isInViewport()) {
-            $(this).css('display', 'block');
+            /*$(this).css('display', 'block');*/
             $(this).addClass('active');
         }
     });
 }
 
 // Check visibility on page load
-/*checkVisibility();*/
+checkVisibility();
 
 
 
   $(document).scroll(function(){
-    /*checkVisibility();*/
+    checkVisibility();
     if ($(window).width() >= 968) {
       windowScroll();
     };
