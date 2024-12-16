@@ -28,7 +28,6 @@
 
 }
 
-
 @media (min-width: 800px) {
   :root {
     --fs-h1:4.5rem;
@@ -974,4 +973,89 @@ Main components
 .appear.active {
   transition:cubic-bezier(1, 0, 0, 1), 300ms;
   transform: translateX(0px);
+}
+
+/* Grundlegende Einstellungen */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+}
+
+img {
+    max-width: 100%; /* Stellt sicher, dass Bilder niemals breiter als ihr Container sind */
+    height: auto;
+}
+
+/* Media Queries für mobile und kleine Bildschirme */
+@media (max-width: 768px) {
+    /* Kopfzeile und Navigationsanpassungen*/
+    header {
+        flex-direction: column;  /* Stapelt Logo und Menü-Button vertikal */
+    }
+
+    .nav-toggle {
+        margin: 0 auto; /* Zentriert den Menü-Button */
+    }
+
+    .nav {
+        width: 100%; /* Erstreckt sich über die gesamte Breite */
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: column; /* Vertikale Anordnung der Navigationselemente */
+    }
+
+    .section {
+        padding: 2em 1em; /* Reduziert das Padding in Sektionen */
+    }
+
+    .intro, .my-services, .about-me, .skills__programming, .my-work {
+        grid-template-columns: 1fr; /* Stellt Grids auf eine einzige Spalte um */
+    }
+
+    .btn, .section__subtitle {
+        padding: 0.5em; /* Reduziert Padding bei Buttons und Untertiteln */
+    }
+
+    /* Text- und Fontgrößenanpassungen */
+    :root {
+        --fs-body: 0.9rem;
+        --fs-h1: 2rem; /* Kleinere Überschriftengrößen */
+        --fs-h2: 1.5rem;
+        --fs-h3: 1.2rem;
+    }
+
+    .carousel-container .prev-btn,
+    .carousel-container .next-btn {
+        transform: scale(0.8); /* Verkleinert die Navigationsschaltflächen der Karussells */
+    }
+    
+    .about-me__img, .portfolio__img {
+        width: 100%;  /* Passt die Bildgrößen an */
+    }
+}
+
+/* Media queries für sehr kleine Geräte */
+@media (max-width: 480px) {
+    h1, h2, h3 {
+        margin-left: 10px; /* Gibt Überschriften etwas mehr Platz */
+        margin-right: 10px;
+    }
+
+    .nav__link {
+        font-size: var(--fs-body); /* Verkleinert die Navigationslinks */
+    }
+
+    .project-skills li {
+        padding: 5px; /* Reduziert das Padding der Skill-Listenelemente */
+    }
 }
