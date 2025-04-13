@@ -1059,3 +1059,67 @@ img {
         padding: 5px; /* Reduziert das Padding der Skill-Listenelemente */
     }
 }
+
+
+.work-history {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.work-history h2 {
+  text-align: center;
+  color: #333;
+}
+
+.job-entry {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-entry:last-child {
+  border-bottom: none;
+}
+
+.job-details {
+  flex-grow: 1;
+}
+
+.job-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #444;
+}
+
+.company {
+  font-size: 1em;
+  color: #666;
+}
+
+.dates {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.description {
+  font-size: 0.9em;
+  color: #444;
+  margin-top: 10px;
+}
+
+.job-duration {
+  text-align: right;
+  font-size: 1em;
+  color: #666;
+  align-self: center;
+}
+
+.job-duration span {
+  font-weight: bold;
+  color: #333;
+}
