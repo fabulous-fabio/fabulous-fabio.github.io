@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabio Portfolio website</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a8af704177.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-visible@1.2.0/jquery.visible.min.js"></script>
+
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <!-- <img src="img/logo.png" alt="img/image-not-found.jpeg"> -->
+      </div>
+      <button type="button" name="button" class="nav-toggle" aria-label="toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item" ><a href="#cv" class="nav__link">Curriculum vitae</a></li>
+          <li class="nav__item" ><a href="#projects" class="nav__link">Projects</a></li>
+          <li class="nav__item" ><a href="#transcript" class="nav__link">Transcript</a></li>
+          <!--<li class="nav__item" ><a href="#work" class="nav__link">Meine Arbeit</a></li>-->
+        </ul>
+      </nav>
+    </header>
+
+    
+    <section class="intro" id="home">
+      <h1 class="section__title section__title--intro">
+        Hi, I am <strong> Fabio Scagliola </strong>
+      </h1>
+      <p class="section__subtitle section__subtitle--intro">Medieninformatik</p>
+      <img src="img/me.JPG" onerror="this.src='img/image-not-found.jpeg';" class="intro__img">
+    </section>
+    
+    <section class="work-history">
+      <h2>Meine Arbeitshistorie</h2>
+  
+      <!-- Job Entry 1 -->
+      <div class="job-entry">
+          <i class="fas fa-cogs job-icon"></i> <!-- Icon für Werkstudent im Bereich Forschung & Entwicklung -->
+          <div class="job-details">
+              <div class="job-title">Werkstudent@ResearchAndPredevelopment</div>
+              <div class="company">Siemens</div>
+              <div class="dates">März 2025 - Heute</div>
+              <div class="description">Entwicklung von Echtzeitsystemen</div>
+          </div>
+          <div class="job-duration">
+              <span></span>
+          </div>
+      </div>
+  
+      <!-- Job Entry 2 -->
+      <div class="job-entry">
+          <i class="fas fa-briefcase job-icon"></i> <!-- Icon für Consultant -->
+          <div class="job-details">
+              <div class="job-title">Consultant</div>
+              <div class="company">WIASS AG</div>
+              <div class="dates">März 2025 - Heute</div>
+              <div class="description">Entwicklung und Evaluation von Automatisierungsansätzen für den Datenverkehr im Versicherungsumfeld.</div>
+          </div>
+          <div class="job-duration">
+              <span></span>
+          </div>
+      </div>
+  
+      <!-- Job Entry 3 -->
+      <div class="job-entry">
+          <i class="fas fa-cogs job-icon"></i> <!-- Icon für Praktikant im Bereich Engineering -->
+          <div class="job-details">
+              <div class="job-title">Praktikant@ProductionEngineering</div>
+              <div class="company">Siemens</div>
+              <div class="dates">Oktober 2024 - März 2025</div>
+              <div class="description">Entwicklung von Automatisierungslösungen im Produktionsumfeld.</div>
+          </div>
+          <div class="job-duration">
+              <span></span>
+          </div>
+      </div>
+  
+      <!-- Job Entry 4 -->
+      <div class="job-entry">
+          <i class="fas fa-cogs job-icon"></i> <!-- Icon für Werkstudent im Bereich Engineering -->
+          <div class="job-details">
+              <div class="job-title">Werkstudent@ProductionEngineering</div>
+              <div class="company">Siemens</div>
+              <div class="dates">Februar 2024 - Juli 2024</div>
+              <div class="description">Entwicklung von Automatisierungslösungen im Produktionsumfeld.</div>
+          </div>
+          <div class="job-duration">
+              <span></span>
+          </div>
+      </div>
+  
+  </section>
+
+    <footer class="footer">
+      <a href="mailto:mail@gmx.de" class="footer-link">fabio.scagliola@gmx.de</a>
+      <ul class="social-list">
+        <li class="social-list__item"><a class="social-list__link" href="#"><i class="fab fa-instagram"></i></a></li>
+        <li class="social-list__item"><a class="social-list__link" href="#"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </footer>
+
+    <script src="js/scipts.js" type="text/javascript"></script>
+
+  </body>
+</html>
