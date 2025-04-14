@@ -111,3 +111,41 @@ p {
   width: 200px;
   line-height: 1.5;
 }
+
+.title-section {
+  height: 50rem;
+
+}
+
+/* Intro Section Styles */
+.max-width-adaptive-sm {
+  padding: 100vh 2rem 4rem; /* 100vh damit der erste Bildschirm voll ist */
+}
+
+.text-component {
+  position: relative;
+  z-index: 1;
+}
+
+.textxxxl {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.text-md {
+  font-size: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.heading {
+  width: 100%;
+}
+
+#heading-container {
+  display: flex;
+  flex-direction: column;
+  
+}

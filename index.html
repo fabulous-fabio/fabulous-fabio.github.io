@@ -3,90 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Karriere Timeline</title>
+    <title>Fabio Scagliola - Portfolio</title>
 
     <!-- Locomotive Scroll CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
-
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
-
-    <!-- Dein CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
+    
     <!-- Locomotive Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <section data-bgcolor="#bcb8ad" data-textcolor="#032f35">
-            <div>
-                <h1 data-scroll data-scroll-speed="1">
-                    <span>Meine</span>
-                    <span>Karriere</span>
-                    <span>Timeline</span>
-                </h1>
-                <p data-scroll data-scroll-speed="2" data-scroll-delay="0.2">
-                    Erfahrungen in Forschung, Entwicklung und Beratung
-                </p>
+    <main data-scroll-container>
+        <!-- Intro Section -->
+        <div class="container max-width-adaptive-sm margin-bottom-lg">
+            <div id="heading-container" class="text-component text-center">
+                <p class="textxxxl heading">Fabio Scagliola</p>
+                <p class="text-md subheading">Medieninformatik</p>
             </div>
-        </section>
-
+        </div>
+    <div class="container">
         <section id="sectionPin">
             <div class="pin-wrap">
-                <!-- Siemens R&D -->
-                <div class="experience-block">
+                <!-- Experience 1 -->
+                <div class="experience-card">
+                    <i class="fas fa-cogs"></i>
                     <h2>Werkstudent@ResearchAndPredevelopment</h2>
                     <p class="company">Siemens</p>
                     <p class="date">März 2025 - Heute</p>
-                    <p class="description">Entwicklung von Echtzeitsystemen</p>
-                    <img src="images/siemens-rd.jpg" alt="Siemens Research & Development">
+                    <p class="desc">Entwicklung von Echtzeitsystemen</p>
                 </div>
 
-                <!-- WIASS -->
-                <div class="experience-block">
+                <!-- Experience 2 -->
+                <div class="experience-card">
+                    <i class="fas fa-briefcase"></i>
                     <h2>Consultant</h2>
                     <p class="company">WIASS AG</p>
                     <p class="date">März 2025 - Heute</p>
-                    <p class="description">Entwicklung und Evaluation von Automatisierungsansätzen für den Datenverkehr im Versicherungsumfeld</p>
-                    <img src="images/wiass.jpg" alt="WIASS AG">
+                    <p class="desc">Entwicklung und Evaluation von Automatisierungsansätzen für den Datenverkehr im Versicherungsumfeld.</p>
                 </div>
 
-                <!-- Siemens Praktikum -->
-                <div class="experience-block">
+                <!-- Experience 3 -->
+                <div class="experience-card">
+                    <i class="fas fa-cogs"></i>
                     <h2>Praktikant@ProductionEngineering</h2>
                     <p class="company">Siemens</p>
                     <p class="date">Oktober 2024 - März 2025</p>
-                    <p class="description">Entwicklung von Automatisierungslösungen im Produktionsumfeld</p>
-                    <img src="images/siemens-prod.jpg" alt="Siemens Production Engineering">
+                    <p class="desc">Entwicklung von Automatisierungslösungen im Produktionsumfeld.</p>
                 </div>
 
-                <!-- Siemens Werkstudent -->
-                <div class="experience-block">
+                <!-- Experience 4 -->
+                <div class="experience-card">
+                    <i class="fas fa-cogs"></i>
                     <h2>Werkstudent@ProductionEngineering</h2>
                     <p class="company">Siemens</p>
                     <p class="date">Februar 2024 - Juli 2024</p>
-                    <p class="description">Entwicklung von Automatisierungslösungen im Produktionsumfeld</p>
-                    <img src="images/siemens-eng.jpg" alt="Siemens Engineering">
+                    <p class="desc">Entwicklung von Automatisierungslösungen im Produktionsumfeld.</p>
                 </div>
             </div>
         </section>
-
-        <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
-            <div class="contact-section">
-                <img src="images/profile.jpg" alt="Profil Bild" class="profile-image">
-                <h2 data-scroll data-scroll-speed="1" class="credit">
-                    <a href="https://github.com/yourusername" target="_blank">Besuchen Sie mein GitHub Profil</a>
-                </h2>
-            </div>
-        </section>
     </div>
-
-    <!-- Dein JavaScript -->
+</main>
+    <!-- Custom JS -->
     <script src="js/scripts.js"></script>
 </body>
 </html>
