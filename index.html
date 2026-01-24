@@ -1,123 +1,249 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabio Portfolio website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <title>Julian zieht nach Köln | WG-Gesuch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a8af704177.js" crossorigin="anonymous"></script>
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-visible@1.2.0/jquery.visible.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: '#9CAF88',
+                        softblue: '#A3BFD9',
+                        dark: '#2D3436',
+                        warmgray: '#F2F2F2'
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        .hobby-slider-container {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+        }
+        .hobby-slider-container::-webkit-scrollbar { display: none; }
+        
+        .bento-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
 
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <!-- <img src="img/logo.png" alt="img/image-not-found.jpeg"> -->
-      </div>
-      <button type="button" name="button" class="nav-toggle" aria-label="toggle navigation">
-        <span class="hamburger"></span>
-      </button>
-      <nav class="nav">
-        <ul class="nav__list">
-          <li class="nav__item" ><a href="#cv" class="nav__link">Curriculum vitae</a></li>
-          <li class="nav__item" ><a href="#projects" class="nav__link">Projects</a></li>
-          <li class="nav__item" ><a href="#transcript" class="nav__link">Transcript</a></li>
-          <!--<li class="nav__item" ><a href="#work" class="nav__link">Meine Arbeit</a></li>-->
-        </ul>
-      </nav>
-    </header>
+        #map { height: 400px; width: 100%; border-radius: 2rem; z-index: 10; }
 
-    
-    <section class="intro" id="home">
-      <h1 class="section__title section__title--intro">
-        Hi, I am <strong> Fabio</strong>
-      </h1>
-      <p class="section__subtitle section__subtitle--intro">Medieninformatik</p>
-      <img src="img/me.JPG" onerror="this.src='img/image-not-found.jpeg';" class="intro__img">
+        /* Animation für die Bilderfolge */
+        .image-sequence-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .sequence-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.05s steps(1);
+        }
+
+        .sequence-image.active { opacity: 1; }
+        .final-image-reveal { opacity: 1 !important; transform: scale(1) !important; }
+    </style>
+</head>
+<body class="bg-[#FBFBFA] text-dark antialiased">
+
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-2xl bg-white/80 backdrop-blur-xl z-50 rounded-full border border-white/20 shadow-lg px-8 py-3 flex justify-between items-center">
+        <span class="font-extrabold tracking-tight text-sage text-xl">Julian.</span>
+        <div class="flex items-center gap-6 text-sm font-semibold">
+            <a href="#journey" class="hover:text-sage transition">Road to Köln</a>
+            <a href="#about" class="hover:text-sage transition">Hobbys</a>
+            <a href="#contact" class="bg-sage text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition shadow-lg shadow-sage/20">Kontakt</a>
+        </div>
+    </nav>
+
+    <section class="pt-44 pb-20 px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="zoom-out">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" class="rounded-[3rem] shadow-2xl w-full aspect-[4/5] object-cover">
+            </div>
+            <div data-aos="fade-up" class="space-y-6">
+                <div class="inline-block bg-sage/10 text-sage px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest">Servus & Hallo!</div>
+                <h1 class="text-6xl font-extrabold leading-[1.1]">Julian <span class="text-sage">goes Cologne.</span></h1>
+                <p class="text-xl text-gray-500 leading-relaxed">
+                    Ich tausche Lebkuchen gegen Karneval! Für mein <span class="font-bold text-dark">Jura-Studium</span> ziehe ich von Nürnberg nach Köln.
+                </p>
+            </div>
+        </div>
     </section>
-    
-    <section class="work-history">
-      <h2>Meine Arbeitshistorie</h2>
-  
-      <!-- Job Entry 1 -->
-      <div class="job-entry">
-          <i class="fas fa-cogs job-icon"></i> <!-- Icon für Werkstudent im Bereich Forschung & Entwicklung -->
-          <div class="job-details">
-              <div class="job-title">Werkstudent@ResearchAndPredevelopment</div>
-              <div class="company">Siemens</div>
-              <div class="dates">März 2025 - Heute</div>
-              <div class="description">Entwicklung von Echtzeitsystemen</div>
-          </div>
-          <div class="job-duration">
-              <span></span>
-          </div>
-      </div>
-  
-      <!-- Job Entry 2 -->
-      <div class="job-entry">
-          <i class="fas fa-briefcase job-icon"></i> <!-- Icon für Consultant -->
-          <div class="job-details">
-              <div class="job-title">Consultant</div>
-              <div class="company">WIASS AG</div>
-              <div class="dates">März 2025 - Heute</div>
-              <div class="description">Entwicklung und Evaluation von Automatisierungsansätzen für den Datenverkehr im Versicherungsumfeld.</div>
-          </div>
-          <div class="job-duration">
-              <span></span>
-          </div>
-      </div>
-  
-      <!-- Job Entry 3 -->
-      <div class="job-entry">
-          <i class="fas fa-cogs job-icon"></i> <!-- Icon für Praktikant im Bereich Engineering -->
-          <div class="job-details">
-              <div class="job-title">Praktikant@ProductionEngineering</div>
-              <div class="company">Siemens</div>
-              <div class="dates">Oktober 2024 - März 2025</div>
-              <div class="description">Entwicklung von Automatisierungslösungen im Produktionsumfeld.</div>
-          </div>
-          <div class="job-duration">
-              <span></span>
-          </div>
-      </div>
-  
-      <!-- Job Entry 4 -->
-      <div class="job-entry">
-          <i class="fas fa-cogs job-icon"></i> <!-- Icon für Werkstudent im Bereich Engineering -->
-          <div class="job-details">
-              <div class="job-title">Werkstudent@ProductionEngineering</div>
-              <div class="company">Siemens</div>
-              <div class="dates">Februar 2024 - Juli 2024</div>
-              <div class="description">Entwicklung von Automatisierungslösungen im Produktionsumfeld.</div>
-          </div>
-          <div class="job-duration">
-              <span></span>
-          </div>
-      </div>
-  
-  </section>
-    <footer class="footer">
-      <a href="mailto:mail@gmx.de" class="footer-link">fabio@mail.com</a>
-      <ul class="social-list">
-        <li class="social-list__item"><a class="social-list__link" href="#"><i class="fab fa-instagram"></i></a></li>
-        <li class="social-list__item"><a class="social-list__link" href="#"><i class="fas fa-envelope"></i></a></li>
-      </ul>
+
+    <section id="journey" class="py-20 px-6 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Die Route steht...</h2>
+            <div class="bento-card overflow-hidden !p-0 mb-12" data-aos="fade-up">
+                <div id="map"></div>
+            </div>
+
+            <h2 class="text-3xl font-extrabold mb-4 tracking-tight">Die Reise beginnt...</h2>
+            <div class="bento-card overflow-hidden !p-0 relative bg-gray-100 h-[450px]" data-aos="fade-up">
+                <div id="image-sequence" class="image-sequence-container">
+                    <img src="https://images.unsplash.com/photo-1549420658-963d806a1d47?auto=format&fit=crop&q=80&w=700" class="sequence-image">
+                    <img src="https://images.unsplash.com/photo-1504674900247-087700de9510?auto=format&fit=crop&q=80&w=700" class="sequence-image">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=700" class="sequence-image">
+                    <img src="https://images.unsplash.com/photo-1516246836852-c67b0ac02167?auto=format&fit=crop&q=80&w=700" class="sequence-image">
+                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?auto=format&fit=crop&w=700" class="sequence-image">
+                </div>
+                
+                <div id="köln-reveal" class="absolute inset-0 bg-dark flex items-center justify-center opacity-0 transition-opacity duration-1000 transform scale-95 pointer-events-none">
+                    <div class="relative w-full max-w-lg shadow-2xl rounded-xl overflow-hidden px-4">
+                        <img src="https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&q=80&w=900" class="w-full h-auto object-cover rounded-lg">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent flex items-end p-12">
+                            <h3 class="text-3xl font-extrabold text-white">Ankunft in Köln!</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-12 tracking-tight">Was ich so mache...</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bento-card group" data-aos="fade-up">
+                    <div class="relative mb-6">
+                        <div id="slider1" class="hobby-slider-container flex gap-4 overflow-x-auto snap-x snap-mandatory">
+                            <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?auto=format&fit=crop&w=600" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
+                        </div>
+                        <div class="absolute inset-y-0 w-full flex justify-between items-center px-2 pointer-events-none">
+                            <button onclick="scrollSlider('slider1', -1)" class="p-2 rounded-full bg-white/90 shadow-md pointer-events-auto hover:bg-sage hover:text-white transition group">←</button>
+                            <button onclick="scrollSlider('slider1', 1)" class="p-2 rounded-full bg-white/90 shadow-md pointer-events-auto hover:bg-sage hover:text-white transition">→</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold">Musik & Vinyl</h3>
+                        <span class="text-4xl">🎵</span>
+                    </div>
+                </div>
+
+                <div class="bento-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative mb-6">
+                        <div id="slider2" class="hobby-slider-container flex gap-4 overflow-x-auto snap-x snap-mandatory">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
+                        </div>
+                        <div class="absolute inset-y-0 w-full flex justify-between items-center px-2 pointer-events-none">
+                            <button onclick="scrollSlider('slider2', -1)" class="p-2 rounded-full bg-white/90 shadow-md pointer-events-auto hover:bg-sage hover:text-white transition">←</button>
+                            <button onclick="scrollSlider('slider2', 1)" class="p-2 rounded-full bg-white/90 shadow-md pointer-events-auto hover:bg-sage hover:text-white transition">→</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold">Kochen</h3>
+                        <span class="text-4xl">🍝</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50/50 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-12 text-center tracking-tight">Hard Facts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bento-card flex flex-col items-center justify-center text-center p-10" data-aos="fade-up">
+                    <h3 class="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4">Sauberkeit</h3>
+                    <p class="text-4xl font-extrabold text-sage">10/10 ✨</p>
+                    <p class="text-sm text-gray-400 mt-2">Kein Putzfimmel, aber Ordnungsliebhaber.</p>
+                </div>
+                <div class="bento-card flex flex-col items-center justify-center text-center p-10" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4">Morgentyp</h3>
+                    <p class="text-4xl font-extrabold text-softblue">Muffel ☕</p>
+                    <p class="text-sm text-gray-400 mt-2">Ansprechbar nach dem ersten Kaffee.</p>
+                </div>
+                <div class="bento-card flex flex-col items-center justify-center text-center p-10" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4">Schwäche</h3>
+                    <p class="text-4xl font-extrabold text-red-300">Pflanzen 🌿</p>
+                    <p class="text-sm text-gray-400 mt-2">Sie überleben bei mir leider selten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto bg-dark text-white rounded-[3.5rem] p-12 md:p-20 text-center shadow-2xl" data-aos="zoom-in">
+            <h2 class="text-4xl font-extrabold mb-8">Kaffee in Köln?</h2>
+            <a href="mailto:hallo@julian.de" class="bg-white text-dark px-10 py-4 rounded-full font-bold hover:bg-sage transition inline-block">E-Mail schreiben</a>
+        </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
 
+        // Karte initialisieren
+        const map = L.map('map', { scrollWheelZoom: false }).setView([50.1109, 8.6821], 6);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
+        const nuernberg = [49.4521, 11.0767];
+        const koeln = [50.9375, 6.9603];
+        L.marker(nuernberg).addTo(map).bindPopup('Nürnberg');
+        L.marker(koeln).addTo(map).bindPopup('Köln');
+        L.polyline([nuernberg, koeln], { color: '#9CAF88', weight: 4, dashArray: '10, 10' }).addTo(map);
 
+        // Slider Pfeile
+        function scrollSlider(id, direction) {
+            const slider = document.getElementById(id);
+            slider.scrollBy({ left: direction * slider.clientWidth, behavior: 'smooth' });
+        }
 
-    <script src="js/index.js" type="text/javascript"></script>
+        // Bilder-Sequenz Trigger
+        let sequenceStarted = false;
+        window.addEventListener('scroll', () => {
+            const sequenceDiv = document.getElementById('image-sequence');
+            if (sequenceDiv && sequenceDiv.getBoundingClientRect().top < window.innerHeight / 2 && !sequenceStarted) {
+                sequenceStarted = true;
+                startImageSequence();
+            }
+        });
 
-  </body>
+        function startImageSequence() {
+            const container = document.getElementById('image-sequence');
+            const images = container.querySelectorAll('.sequence-image');
+            const reveal = document.getElementById('köln-reveal');
+            let i = 0;
+            const interval = setInterval(() => {
+                images.forEach(img => img.classList.remove('active'));
+                if (i < images.length) {
+                    images[i].classList.add('active');
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    container.style.opacity = '0';
+                    setTimeout(() => {
+                        container.style.display = 'none';
+                        reveal.classList.add('final-image-reveal');
+                    }, 400);
+                }
+            }, 120);
+        }
+    </script>
+</body>
 </html>
