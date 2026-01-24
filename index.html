@@ -96,10 +96,6 @@
 
     <section id="journey" class="py-20 px-6 bg-white">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Die Route steht...</h2>
-            <div class="bento-card overflow-hidden !p-0 mb-12" data-aos="fade-up">
-                <div id="map"></div>
-            </div>
 
             <h2 class="text-3xl font-extrabold mb-4 tracking-tight">Die Reise beginnt...</h2>
             <div class="bento-card overflow-hidden !p-0 relative bg-gray-100 h-[450px]" data-aos="fade-up">
@@ -199,15 +195,6 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Karte initialisieren
-        const map = L.map('map', { scrollWheelZoom: false }).setView([50.1109, 8.6821], 6);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
-        const nuernberg = [49.4521, 11.0767];
-        const koeln = [50.9375, 6.9603];
-        L.marker(nuernberg).addTo(map).bindPopup('Nürnberg');
-        L.marker(koeln).addTo(map).bindPopup('Köln');
-        L.polyline([nuernberg, koeln], { color: '#9CAF88', weight: 4, dashArray: '10, 10' }).addTo(map);
-
         // Slider Pfeile
         function scrollSlider(id, direction) {
             const slider = document.getElementById(id);
@@ -244,6 +231,25 @@
                 }
             }, 120);
         }
+
+        // Scroll-Sync Effekt für Hobbys (läuft nur einmal beim Reinscrollen)
+        let hasScrolled = false;
+        window.addEventListener('scroll', () => {
+            const section = document.getElementById('about');
+            const sectionPos = section.getBoundingClientRect().top;
+            const screenPos = window.innerHeight / 1.5;
+
+            if (sectionPos < screenPos && !hasScrolled) {
+                const sliders = document.querySelectorAll('.hobby-slider-container');
+                sliders.forEach(slider => {
+                    slider.scrollTo({ left: slider.scrollWidth / 2, behavior: 'smooth' });
+                    setTimeout(() => {
+                        slider.scrollTo({ left: 0, behavior: 'smooth' });
+                    }, 800);
+                });
+                hasScrolled = true;
+            }
+        });
     </script>
 </body>
 </html>
