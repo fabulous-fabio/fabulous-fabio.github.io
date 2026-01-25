@@ -44,37 +44,66 @@
 
         #map { height: 400px; width: 100%; border-radius: 2rem; z-index: 10; }
 
-        /* Animation für die Bilderfolge */
-        .image-sequence-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #eee;
-        }
+        /* Der Container ist jetzt unsichtbar, dient nur noch als Anker */
+.image-sequence-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Höhe beibehalten, damit die Sektion nicht springt */
+    perspective: 2000px;
+    background: transparent; /* Kein Kasten mehr */
+    overflow: visible; /* WICHTIG: Damit Bilder beim Einflug nicht abgeschnitten werden */
+}
 
-        .sequence-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.05s steps(1);
-        }
+.sequence-image {
+    position: absolute;
+    width: 85%; 
+    height: 85%;
+    top: 7.5%;
+    left: 7.5%;
+    object-fit: cover;
+    border: 10px solid white; /* Breiterer Rand für echten Foto-Look */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* Weicherer, tieferer Schatten */
+    border-radius: 4px; /* Nur ganz leicht gerundet, wie Fotopapier */
+    
+    /* Startzustand: Weit oben und transparent */
+    opacity: 0;
+    transform: translateY(-200%) rotateX(-30deg);
+    
+    /* Direkter Einflug ohne Bounce */
+    transition: transform 0.7s ease-out, opacity 0.5s ease-out;
+}
 
-        .sequence-image.active { opacity: 1; }
-        .final-image-reveal { opacity: 1 !important; transform: scale(1) !important; }
+/* Köln-Reveal ebenfalls anpassen */
+#köln-reveal {
+    z-index: 200;
+    overflow: visible;
+}
+
+#köln-reveal .relative {
+    border: 10px solid white;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+/* WICHTIG: Das sorgt dafür, dass die Bilder beim Einflug sichtbar werden */
+.sequence-image.landed {
+    opacity: 1;
+}
+
+
     </style>
 </head>
 <body class="bg-[#FBFBFA] text-dark antialiased">
 
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-2xl bg-white/80 backdrop-blur-xl z-50 rounded-full border border-white/20 shadow-lg px-8 py-3 flex justify-between items-center">
-        <span class="font-extrabold tracking-tight text-sage text-xl">Fabio.</span>
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-2xl bg-white/80 backdrop-blur-xl z-50 rounded-full border border-white/20 shadow-lg px-6 py-2 flex justify-between items-center transition-all duration-500" id="mainNav">
+        <div class="flex items-center gap-3">
+            <img src="img/me.JPG" id="navAvatar" class="w-0 h-10 rounded-full object-cover transition-all duration-500 opacity-0 shadow-sm">
+            <span class="font-extrabold tracking-tight text-sage text-xl">Fabio.</span>
+        </div>
+
         <div class="flex items-center gap-6 text-sm font-semibold">
-            <a href="#journey" class="hover:text-sage transition">Road to Köln</a>
-            <a href="#about" class="hover:text-sage transition">Hobbys</a>
+            <div class="hidden md:flex gap-6">
+                <a href="#journey" class="hover:text-sage transition text-gray-600">Road to Köln</a>
+                <a href="#about" class="hover:text-sage transition text-gray-600">Hobbys</a>
+            </div>
             <a href="#contact" class="bg-sage text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition shadow-lg shadow-sage/20">Kontakt</a>
         </div>
     </nav>
@@ -214,52 +243,59 @@
         </div>
     </div>
 </section>
-        <section id="journey" class="py-24 px-6 bg-white">
-          <div class="max-w-5xl mx-auto">
-              <div class="mb-12" data-aos="fade-right">
-                  <h2 class="text-4xl font-extrabold tracking-tight">Von der Vils an den Rhein</h2>
-                  <div class="h-1 w-20 bg-sage mt-4 rounded-full"></div>
-              </div>
-        
-              <div class="grid lg:grid-cols-3 gap-8 items-start">
-                  
-                  <div class="lg:col-span-2 bento-card overflow-hidden !p-0 relative bg-gray-100 h-[450px] shadow-2xl shadow-sage/5" data-aos="fade-up">
-                      <div id="image-sequence" class="image-sequence-container h-full w-full">
-                          <img src="https://images.unsplash.com/photo-1549420658-963d806a1d47?auto=format&fit=crop&q=80&w=900" class="sequence-image w-full h-full object-cover">
-                          <img src="https://images.unsplash.com/photo-1504674900247-087700de9510?auto=format&fit=crop&q=80&w=900" class="sequence-image w-full h-full object-cover">
-                          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=900" class="sequence-image w-full h-full object-cover">
-                          </div>
-                      
-                      <div id="köln-reveal" class="absolute inset-0 bg-dark/90 flex items-center justify-center opacity-0 transition-opacity duration-1000 transform scale-95 pointer-events-none">
-                          <div class="relative w-[85%] shadow-2xl rounded-2xl overflow-hidden">
-                              <img src="https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&q=80&w=900" class="w-full h-auto object-cover">
-                              <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent flex items-end p-8">
-                                  <h3 class="text-2xl font-extrabold text-white">Domstadt, ich komme! 🍦</h3>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-        
-                  <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
-                      <div class="bg-sage/10 p-8 rounded-[2rem] border border-sage/10">
-                          <span class="text-sage font-bold text-xs uppercase tracking-widest block mb-4">Background</span>
-                          <h3 class="text-xl font-bold mb-4 leading-snug text-dark">Grüße aus dem Süden!</h3>
-                          <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                              Aufgewachsen in einer gemütlichen Kleinstadt, habe ich dort nicht nur mein Abitur gemacht, sondern schließe gerade an der örtlichen TH meinen <span class="text-sage font-semibold">Bachelor in Informatik</span> ab.
-                          </p>
-                      </div>
-        
-                      <div class="bg-softblue/10 p-8 rounded-[2rem] border border-softblue/10">
-                          <h3 class="text-lg font-bold mb-2">Bereit für Köln?</h3>
-                          <p class="text-gray-500 text-sm italic">
-                              "Vom Code-Schreiben in Bayern zum Paragraphen-Wälzen (Jura) am Rhein – ich freue mich auf den Tapetenwechsel!"
-                          </p>
-                      </div>
-                  </div>
-        
-              </div>
-          </div>
-        </section>
+
+<section id="journey" class="py-24 px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+        <div class="mb-12" data-aos="fade-right">
+            <h2 class="text-4xl font-extrabold tracking-tight">Von der Vils an den Rhein</h2>
+            <div class="h-1 w-20 bg-sage mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+            <div class="lg:col-span-2 relative h-[500px]" data-aos="fade-up">
+                <div id="image-sequence" class="image-sequence-container">
+                    <img src="img/wiwiparty.JPG" class="sequence-image">
+                    <img src="img/berge.JPG" class="sequence-image">
+                    <img src="img/party.JPG" class="sequence-image">
+                    <img src="img/IMG_0876(1).png" class="sequence-image">
+                    <img src="img/IMG_2389.png" class="sequence-image">
+                    <img src="img/IMG_2780.png" class="sequence-image">
+                    <img src="img/IMG_3189.png" class="sequence-image">
+                    <img src="img/IMG_4630.JPG" class="sequence-image">
+                    <img src="img/IMG_4831.png" class="sequence-image">
+                    <img src="img/köln.jpeg" class="sequence-image">
+
+                    
+                    <!--<div id="köln-reveal" class="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-1000 transform scale-110 pointer-events-none z-[100]">
+                        <div class="relative w-[90%] shadow-2xl rounded-2xl overflow-hidden border-[10px] border-white bg-white">
+                            <img src="https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&q=80&w=900" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                                <h3 class="text-2xl font-extrabold text-white">Domstadt, ich komme! 🍦</h3>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+
+            <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="bg-sage/10 p-8 rounded-[2rem] border border-sage/10">
+                    <span class="text-sage font-bold text-xs uppercase tracking-widest block mb-4">Background</span>
+                    <h3 class="text-xl font-bold mb-4 leading-snug text-dark">Grüße aus dem Süden!</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        Aufgewachsen in einer gemütlichen Kleinstadt, habe ich dort gerade meinen <span class="text-sage font-semibold">Bachelor in Informatik</span> abgeschlossen.
+                    </p>
+                </div>
+
+                <div class="bg-softblue/10 p-8 rounded-[2rem] border border-softblue/10">
+                    <h3 class="text-lg font-bold mb-2 text-dark">Bereit für Köln?</h3>
+                    <p class="text-gray-500 text-sm italic">
+                        "Vom Code-Schreiben in Bayern zum Paragraphen-Wälzen am Rhein – ich freue mich!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section id="about" class="py-24 px-6">
             <div class="max-w-6xl mx-auto">
@@ -290,7 +326,7 @@
                     <div class="md:col-span-1 bento-card group bg-white" data-aos="fade-up" data-aos-delay="100">
                         <div class="relative mb-6">
                             <div id="slider-fit" class="hobby-slider-container flex gap-4 overflow-x-auto snap-x snap-mandatory">
-                                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
+                                <img src="img/IMG_2389.png" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
                                 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
                             </div>
                             <div class="absolute inset-y-0 w-full flex justify-between items-center px-2 pointer-events-none">
@@ -426,24 +462,34 @@
         });
 
         function startImageSequence() {
-            const container = document.getElementById('image-sequence');
-            const images = container.querySelectorAll('.sequence-image');
+            const images = document.querySelectorAll('.sequence-image');
             const reveal = document.getElementById('köln-reveal');
             let i = 0;
+
             const interval = setInterval(() => {
-                images.forEach(img => img.classList.remove('active'));
                 if (i < images.length) {
-                    images[i].classList.add('active');
+                    // Minimaler Versatz nach unten und zur Seite für den Stapel-Look
+                    const xOffset = (Math.random() * 10 - 5).toFixed(1); // -5px bis +5px
+                    const yOffset = (i * 3); // Jedes Bild liegt 3px tiefer als das vorherige
+                    const rotation = (Math.random() * 6 - 3).toFixed(1); // Leichte Drehung -3 bis +3 Grad
+                    
+                    images[i].style.transform = `translate(${xOffset}px, ${yOffset}px) rotateX(0deg) rotateZ(${rotation}deg)`;
+                    images[i].classList.add('landed');
+                    images[i].style.zIndex = i;
+                    
                     i++;
                 } else {
                     clearInterval(interval);
-                    container.style.opacity = '0';
+                    
                     setTimeout(() => {
-                        container.style.display = 'none';
+                        // Das finale Köln-Bild landet ganz oben, perfekt zentriert
+                        reveal.style.opacity = '1';
+                        reveal.style.transform = `translateY(${i * 3}px) scale(1.05)`; 
+                        reveal.style.pointerEvents = 'auto';
                         reveal.classList.add('final-image-reveal');
-                    }, 400);
+                    }, 800);
                 }
-            }, 120);
+            }, 250); // Etwas schnellerer Takt für mehr Dynamik
         }
 
         // Scroll-Sync Effekt für Hobbys (läuft nur einmal beim Reinscrollen)
@@ -462,6 +508,25 @@
                     }, 800);
                 });
                 hasScrolled = true;
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const navAvatar = document.getElementById('navAvatar');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (window.scrollY > 400) {
+                // Zustand: Nach dem Scrollen
+                navAvatar.classList.remove('w-0', 'opacity-0');
+                navAvatar.classList.add('w-10', 'opacity-100');
+                mainNav.classList.add('py-2', 'px-6');
+                mainNav.classList.remove('py-3', 'px-8');
+            } else {
+                // Zustand: Ganz oben (Hero sichtbar)
+                navAvatar.classList.add('w-0', 'opacity-0');
+                navAvatar.classList.remove('w-10', 'opacity-100');
+                mainNav.classList.remove('py-2', 'px-6');
+                mainNav.classList.add('py-3', 'px-8');
             }
         });
     </script>
