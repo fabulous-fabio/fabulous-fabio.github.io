@@ -88,6 +88,29 @@
     opacity: 1;
 }
 
+.gallery-bubble {
+    /* Nur transform animieren – das ist extrem schnell (GPU-beschleunigt) */
+    transition: transform 0.15s ease-out;
+    position: relative;
+    z-index: 1;
+    /* Verhindert Ruckeln beim Skalieren */
+    backface-visibility: hidden;
+    transform: translateZ(0); 
+}
+
+.gallery-bubble:hover {
+    /* Skalierung auf 1.05 reduziert – wirkt oft schneller als ein riesiger Zoom */
+    transform: scale(1.05) !important;
+    z-index: 50 !important;
+    /* Schatten nur minimal beim Hover ändern oder statisch lassen für mehr Speed */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.gallery-bubble img {
+    /* Bild-Animation komplett abschalten für sofortiges Feedback */
+    transition: none !important;
+}
+
 
     </style>
 </head>
@@ -247,7 +270,7 @@
 <section id="journey" class="py-24 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
         <div class="mb-12" data-aos="fade-right">
-            <h2 class="text-4xl font-extrabold tracking-tight">Von der Vils an den Rhein</h2>
+            <h2 class="text-4xl font-extrabold tracking-tight">Next Stop: Köln</h2>
             <div class="h-1 w-20 bg-sage mt-4 rounded-full"></div>
         </div>
 
@@ -263,6 +286,7 @@
                     <img src="img/IMG_3189.png" class="sequence-image">
                     <img src="img/IMG_4630.JPG" class="sequence-image">
                     <img src="img/IMG_4831.png" class="sequence-image">
+                    <img src="img/IMG_4851.png" class="sequence-image">
                     <img src="img/köln.jpeg" class="sequence-image">
 
                     
@@ -306,8 +330,10 @@
                     <div class="md:col-span-2 bento-card group bg-white" data-aos="fade-up">
                         <div class="relative mb-6">
                             <div id="slider-bike" class="hobby-slider-container flex gap-4 overflow-x-auto snap-x snap-mandatory">
-                                <img src="https://images.unsplash.com/photo-1484156818044-c040038b0719?auto=format&fit=crop&w=1000" class="w-full h-80 object-cover rounded-2xl flex-shrink-0 snap-center">
-                                <img src="https://images.unsplash.com/photo-1532298229144-0ee0c57515c3?auto=format&fit=crop&w=1000" class="w-full h-80 object-cover rounded-2xl flex-shrink-0 snap-center">
+                                <img src="img/IMG_2389.png" class="w-full h-80 object-cover rounded-2xl flex-shrink-0 snap-center">
+                                <img src="img/IMG_8610.png" class="w-full h-80 object-cover rounded-2xl flex-shrink-0 snap-center">
+                                <img src="img/IMG_2780.png" class="w-full h-80 object-cover rounded-2xl flex-shrink-0 snap-center">
+
                             </div>
                             <div class="absolute inset-y-0 w-full flex justify-between items-center px-2 pointer-events-none">
                                 <button onclick="scrollSlider('slider-bike', -1)" class="p-2 rounded-full bg-white/90 shadow-md pointer-events-auto hover:bg-sage hover:text-white transition">←</button>
@@ -327,7 +353,7 @@
                         <div class="relative mb-6">
                             <div id="slider-fit" class="hobby-slider-container flex gap-4 overflow-x-auto snap-x snap-mandatory">
                                 <img src="img/IMG_2389.png" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
-                                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600" class="w-full h-64 object-cover rounded-2xl flex-shrink-0 snap-center">
+
                             </div>
                             <div class="absolute inset-y-0 w-full flex justify-between items-center px-2 pointer-events-none">
                                 <button onclick="scrollSlider('slider-fit', -1)" class="p-2 rounded-full bg-white/90 shadow-sm pointer-events-auto hover:bg-softblue hover:text-white transition">←</button>
@@ -400,6 +426,51 @@
                 </div>
             </div>
         </section>
+
+        <section id="gallery" class="py-24 px-6 bg-white">
+<section id="gallery" class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="mb-12 text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-extrabold tracking-tight text-dark">Eindrücke & Momente</h2>
+            <p class="text-gray-500 mt-4">Ein kleiner Einblick in mein bisheriges WG-Leben, Reisen und Abenteuer.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 auto-rows-[200px]">
+            
+            <div class="gallery-bubble md:row-span-2 overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in">
+                <img src="img/IMG_2389.png" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-bubble md:col-span-2 overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
+                <img src="img/berge.JPG" class="w-full h-full object-cover object-[center_75%]">
+            </div>
+
+            <div class="gallery-bubble overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
+                <img src="img/party.JPG" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-bubble overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
+                <img src="img/IMG_3189.png" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-bubble md:row-span-2 overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
+                <img src="img/IMG_0876(1).png" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-bubble overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="400">
+                <img src="img/barcelona_bus.jpg" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-bubble md:col-span-2 overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
+                <img src="img/wiwiparty.JPG" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-bubble overflow-hidden rounded-[2.5rem] shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="500">
+                <img src="img/IMG_4630.JPG" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div>
+</section>
             
         <section class="py-12 px-6">
           <div class="max-w-5xl mx-auto">
